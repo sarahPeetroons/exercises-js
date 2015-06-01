@@ -23,12 +23,11 @@
 	};
 
 	var checkFirstNumber = function(){
-		/*var regVisa = /^4[0-9]{12}(?:[0-9]{3})?$/;
-        var regMasterCard = /^5[1-5][0-9]{14}$/;*/
         
         $("#card").keydown(function (e) {
         	var value = $(this).val() + 1;
         	var input = $(this).parent().find('.input-group-addon');
+        	
         	var visa = /^4[0-9]{12}([0-9]){3}?$/;
         	var masterCard = /^5[0-9]{15}$/;
         	var americanExpress = /^3[47][0-9]{13}$/;
