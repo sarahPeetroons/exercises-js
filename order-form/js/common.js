@@ -28,14 +28,42 @@
         
         $("#card").keydown(function (e) {
         	var value = $(this).val() + 1;
+        	var input = $(this).parent().find('.input-group-addon');
+        	var visa = /^4[0-9]{12}([0-9]){3}?$/;
+        	var masterCard = /^5[0-9]{15}$/;
+        	var americanExpress = /^3[47][0-9]{13}$/;
+
+        	// check if it's a Visa card
         	if(value.indexOf(4) == 0){
-	        	console.log('visa');
-	        	$(this).parent().find('.input-group-addon').empty().append('visa');
+	        	input.empty().append('Visa');
+	        	if(value.match(/^4[0-9]{12}([0-9]{3})?$/)){
+	        		input.empty().append('stil');
+	        	}else if(value.match(/[0-9]{17}$/)){
+	        		input.empty().append('wrong');
+	        	}
+	        // check if it's a Master card
 	        }else if(value.indexOf(5) == 0){
-        		console.log('masterCard');
-	        	$(this).parent().find('.input-group-addon').empty().append('masterCard');
+	        	input.empty().append('MasterCard');
+	        	if(value.match(/^5[0-9]{15}$/)){
+	        		input.empty().append('stil');
+	        	}else if(value.match(/[0-9]{17}$/)){
+	        		input.empty().append('wrong');
+	        	}
+	        // check if it's a American Express
+	        }else if(value.indexOf(3) == 0){
+	        	input.empty().append('American Express');
+	        	if(value.match(/^3[47][0-9]$/)){
+	        		input.empty().append('stil');
+	        		if(value.match(/[0-9]{15}$/)){
+	        			input.empty().append('stil');
+	        		}else{
+	        			input.empty().append('wrong');
+	        		}
+	        	}else if(value.match(/[0-9]{16}$/)){
+	        		input.empty().append('wrong');
+	        	}
 	        }else{
-	        	$(this).parent().find('.input-group-addon').empty();
+	        	input.empty();
 	        }
 	    });
 	};
