@@ -25,6 +25,10 @@
 		    var value = $(this).val();
         	var input = $(this).parent().find('.input-group-addon');
 
+        	// var visa = /^4[0-9]{12}([0-9]{3})?$/;
+        	// var masterCard = /^5[0-9]{15}$/;
+        	// var americanExpress = /^3[47][0-9]{13}$/
+
         	// check if it's a Visa card
         	if(value.indexOf(4) == 0){
 
@@ -53,8 +57,8 @@
 	        }else if(value.indexOf(3) == 0){
 
 	        	input.empty().append('American Express');
-	        	// regex start by 3 second and third number 47 lenght 15
-	        	if(value.match(/^3[47][0-9]{13}$/)){
+	        	// regex second and third number 47 lenght 15
+	        	if(value.match(/[47]$/)){
 	        		input.empty().append('stil American');
 	        	// regex if length 17 is wrong
 	        	}else if(value.match(/[0-9]{16}$/)){
