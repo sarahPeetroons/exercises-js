@@ -4,8 +4,6 @@
 	var numberTest = function(){
 		$("#card").keydown(function (e) {
 
-			//console.log($("#card").val());
-
 	        // Allow: backspace, delete, tab, escape, enter and .
 	        if ($.inArray(e.keyCode, [46, 8, 9, 27, 13, 110, 190]) !== -1 ||
 	             // Allow: Ctrl+A, Command+A
@@ -23,48 +21,51 @@
 	};
 
 	var checkFirstNumber = function(){
-        
-        $("#card").keydown(function (e) {
-        	var value = $(this).val() + 1;
+		$('#card').on("input", function() {
+		    var value = $(this).val();
         	var input = $(this).parent().find('.input-group-addon');
-        	
-        	var visa = /^4[0-9]{12}([0-9]){3}?$/;
-        	var masterCard = /^5[0-9]{15}$/;
-        	var americanExpress = /^3[47][0-9]{13}$/;
 
         	// check if it's a Visa card
         	if(value.indexOf(4) == 0){
+
 	        	input.empty().append('Visa');
+	        	// regex start by 4 length 13 or 16
 	        	if(value.match(/^4[0-9]{12}([0-9]{3})?$/)){
-	        		input.empty().append('stil');
+	        		input.empty().append('stil Visa');
+	        	// regex if length 17 is wrong
 	        	}else if(value.match(/[0-9]{17}$/)){
-	        		input.empty().append('wrong');
+	        		input.empty();
 	        	}
+
 	        // check if it's a Master card
 	        }else if(value.indexOf(5) == 0){
+
 	        	input.empty().append('MasterCard');
+	        	// regex start by 5 length 16
 	        	if(value.match(/^5[0-9]{15}$/)){
-	        		input.empty().append('stil');
+	        		input.empty().append('stil Master');
+	        	// regex if length 17 is wrong
 	        	}else if(value.match(/[0-9]{17}$/)){
-	        		input.empty().append('wrong');
+	        		input.empty();
 	        	}
+
 	        // check if it's a American Express
 	        }else if(value.indexOf(3) == 0){
+
 	        	input.empty().append('American Express');
-	        	if(value.match(/^3[47][0-9]$/)){
-	        		input.empty().append('stil');
-	        		if(value.match(/[0-9]{15}$/)){
-	        			input.empty().append('stil');
-	        		}else{
-	        			input.empty().append('wrong');
-	        		}
+	        	// regex start by 3 second and third number 47 lenght 15
+	        	if(value.match(/^3[47][0-9]{13}$/)){
+	        		input.empty().append('stil American');
+	        	// regex if length 17 is wrong
 	        	}else if(value.match(/[0-9]{16}$/)){
-	        		input.empty().append('wrong');
+	        		input.empty();
 	        	}
+
 	        }else{
 	        	input.empty();
 	        }
-	    });
+		});
+        
 	};
 	
 
