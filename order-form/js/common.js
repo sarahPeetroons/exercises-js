@@ -35,32 +35,45 @@
 	        	input.empty().append('Visa');
 	        	// regex start by 4 length 13 or 16
 	        	if(value.match(/^4[0-9]{12}([0-9]{3})?$/)){
-	        		input.empty().append('stil Visa');
+	        		input.empty().append('Visa check');
 	        	// regex if length 17 is wrong
 	        	}else if(value.match(/[0-9]{17}$/)){
 	        		input.empty();
 	        	}
+	        // else empty all
+	        }else{
+	        	input.empty();
+	        }
+
+	        // =================================================== //
 
 	        // check if it's a Master card
-	        }else if(value.indexOf(5) == 0){
+        	if(value.indexOf(5) == 0){
 
 	        	input.empty().append('MasterCard');
 	        	// regex start by 5 length 16
 	        	if(value.match(/^5[0-9]{15}$/)){
-	        		input.empty().append('stil Master');
+	        		input.empty().append('MasterCard check');
 	        	// regex if length 17 is wrong
 	        	}else if(value.match(/[0-9]{17}$/)){
 	        		input.empty();
 	        	}
 
 	        // check if it's a American Express
-	        }else if(value.indexOf(3) == 0){
+	        }else{
+	        	input.empty();
+	        }
+
+	        // =================================================== //
+
+	        // check if it's a American Express
+        	if(value.indexOf(347) == 0){
 
 	        	input.empty().append('American Express');
 	        	// regex second and third number 47 lenght 15
-	        	if(value.match(/[47]$/)){
-	        		input.empty().append('stil American');
-	        	// regex if length 17 is wrong
+	        	if(value.match(/^3[47][0-9]{13}$/)){
+	        		input.empty().append('American check');
+	        	// regex if length 16 is wrong
 	        	}else if(value.match(/[0-9]{16}$/)){
 	        		input.empty();
 	        	}
@@ -68,6 +81,8 @@
 	        }else{
 	        	input.empty();
 	        }
+
+
 		});
         
 	};
