@@ -20,7 +20,7 @@
 	    });
 	};
 
-	var checkFirstNumber = function(){
+	var validation = function(){
 		$('#card').on("input", function() {
 		    var value = $(this).val();
         	var input = $(this).parent().find('.input-group-addon');
@@ -40,15 +40,9 @@
 	        	}else if(value.match(/[0-9]{17}$/)){
 	        		input.empty();
 	        	}
-	        // else empty all
-	        }else{
-	        	input.empty();
 	        }
-
-	        // =================================================== //
-
 	        // check if it's a Master card
-        	if(value.indexOf(5) == 0){
+        	else if(value.indexOf(5) == 0){
 
 	        	input.empty().append('MasterCard');
 	        	// regex start by 5 length 16
@@ -60,14 +54,9 @@
 	        	}
 
 	        // check if it's a American Express
-	        }else{
-	        	input.empty();
 	        }
-
-	        // =================================================== //
-
 	        // check if it's a American Express
-        	if(value.indexOf(347) == 0){
+        	else if(value.indexOf(347) == 0){
 
 	        	input.empty().append('American Express');
 	        	// regex second and third number 47 lenght 15
@@ -90,7 +79,8 @@
 
 	$(document).ready(function() {
 		numberTest();
-		checkFirstNumber();
+		validation();
+		
 	});
 
 })(jQuery);
