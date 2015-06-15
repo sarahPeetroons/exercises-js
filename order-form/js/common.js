@@ -35,7 +35,7 @@
 	        	input.empty().append('Visa');
 	        	// regex start by 4 length 13 or 16
 	        	if(value.match(/^4[0-9]{12}([0-9]{3})?$/)){
-	        		input.empty().append('Visa check');
+	        		input.empty().append('<span class="check">Visa</span>');
 	        	// regex if length 17 is wrong
 	        	}else if(value.match(/[0-9]{17}$/)){
 	        		input.empty();
@@ -47,7 +47,7 @@
 	        	input.empty().append('MasterCard');
 	        	// regex start by 5 length 16
 	        	if(value.match(/^5[0-9]{15}$/)){
-	        		input.empty().append('MasterCard check');
+	        		input.empty().append('<span class="check">MasterCard</span>');
 	        	// regex if length 17 is wrong
 	        	}else if(value.match(/[0-9]{17}$/)){
 	        		input.empty();
@@ -56,15 +56,17 @@
 	        // check if it's a American Express
 	        }
 	        // check if it's a American Express
-        	else if(value.indexOf(347) == 0){
+        	else if(value.indexOf(3) == 0){
 
 	        	input.empty().append('American Express');
 	        	// regex second and third number 47 lenght 15
 	        	if(value.match(/^3[47][0-9]{13}$/)){
-	        		input.empty().append('American check');
+	        		input.empty().append('<span class="check">American Express</span>');
 	        	// regex if length 16 is wrong
 	        	}else if(value.match(/[0-9]{16}$/)){
 	        		input.empty();
+	        	}else{
+	        		input.empty().append('<span class="">American fail</span>');
 	        	}
 
 	        }else{
